@@ -134,3 +134,5 @@ Como melhorias para uma V2 pode-se sugerir as seguintes tecnologias:
  - torná-lo um serviço na Nuvem, hospedando em um Azure, GCP ou DigitalOcean, por exemplo.
  - Realizar os tratamentos de erros, captura das mensagens de erros/sucesso, informação do total de arquivos localizados/baixados. Criar stamps de Data/Hora.
  - Utilizar um BD para guardar os registros das datas já pesquisadas, agilizando quando realizar uma busca de uma data que já foi processada anteriormente.
+ - Utilizar variaveis de ambientes ```env var```
+ - Utilizar um arquivo de configurações ```config.ini```
