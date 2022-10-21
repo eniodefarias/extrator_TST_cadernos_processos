@@ -1,7 +1,34 @@
 # Extrator de processos dos cadernos do TST
 
+# Extrator
+  
+A execução deste programa iniciará o fluxo de extração dos dados.  
+💡 por uma questão de tempo para entrega, esta versão é um MVP e realizará o processo mínimo para atender a solicitação. Com muita tristeza 🥲 no coração serão ignorados alguns controles de e prevenções de erro, mas na próxima versão serão tratados e contigênciados para uma melhor performance.
 
-## Proposta/Briefing
+## Requisitos
+
+### Windows
+ - utilizar o Windowns 10 ou superior
+ - ter o [Google Chrome version 106](src/webdriver/chromedriver/windows_ChromeSetup_ver-106.0.5249.119_21-10-2022.exe) instalado
+
+### Linux
+ - ter o [docker](https://docs.docker.com/desktop/install/linux-install/) e [docker-compose](https://docs.docker.com/compose/install/) instalados
+
+
+## Instalação e execução
+### Windows
+ - realizar o download deste repositório em um pasta
+ - executar o arquivo ```extrator.exe```
+
+### Linux
+ - realizar o download deste repositório em um diretório
+ - executar o docker com o seguinte comando:
+   - ```sudo docker xxx yyy zzz```
+
+
+
+
+# Briefing
 
 Dado o link do tribunal abaixo, capture:
  - Baixar os cadernos do TST da última semana
@@ -11,6 +38,9 @@ o Ex. TST 13/10/2022.xlsx
  - Caso um processo apareça repetido em mais de um dia, gerar relatório de duplicatas com os respectivos processos e suas datas.
 
 Link do tribunal: [https://dejt.jt.jus.br/dejt/f/n/diariocon](https://dejt.jt.jus.br/dejt/f/n/diariocon)
+
+
+## Algoritmo
 
 ### Mapeamento do processo para extração
 
@@ -71,4 +101,36 @@ Link do tribunal: [https://dejt.jt.jus.br/dejt/f/n/diariocon](https://dejt.jt.ju
     <picture>
       <img alt="exemplo de falso positivo" src="img/exemplo_falso_positivo.png">
     </picture>
-   
+
+## Bibliotecas
+
+### Selenium e Webdriver
+Para realizar a extração dos arquivos do dite será utilizado o Selenium e um webdriver.  
+Para uma maior compatibilidade será usado o chromedriver, preferencialmente sempre a versão estável mais recente.
+ - [controle de versões do chromedrive](src/webdriver/chromedriver/version.md)  
+
+### PyPDF2, Tabula, Tika
+É necessário utilizar uma biblioteca para fazer a leitura do arquivo pdf e extrair seu conteudo em formato de texto.  
+Em seguida realizar um parser ou find para coletar as strings com os termos de para localizar e extrair os "Processos"
+
+#### dicas
+ - http://theautomatic.net/2020/01/21/how-to-read-pdf-files-with-python/#:~:text=To%20read%20PDF%20files%20with%20Python%2C%20we%20can%20focus%20most,able%20to%20highlight%20the%20text.
+ - https://www.hashtagtreinamentos.com/ler-tabelas-em-pdf-com-python?gclid=CjwKCAjwwL6aBhBlEiwADycBIP5IlXlBAGNeCccMVSLiewxB8dP67xzJxJjX5V-1mVE1I27tRejMdRoC22EQAvD_BwE
+ - PyPDF2, Tabula: https://www.computersciencemaster.com.br/como-ler-pdf-com-python/
+ - Tika: https://dadosaocubo.com/extraindo-texto-de-arquivos-pdf-com-python/
+
+### Pandas
+Será utilizado o pandas para gerar os arquivos arquivos xls com os resultados das consultas conforme informado no Briefing.
+
+# Considerações finais
+Esse é um projeto bastante interessante e é possível torná-lo em um SaaS.  
+
+Como melhorias para uma V2 pode-se sugerir as seguintes tecnologias:
+ - Docker para mantê-lo conteirnizado e assim torná-lo portável e executável em qualquer OS
+ - Flask para criar uma interface web amigavel para o usuário poder interagir
+   - também criar rotas a fim de transfomá-lo em uma API 
+ - opção de selecionar uma data específica ou um range diferente do default(últimos 7 dias
+ - Message Broker, como o RabbitMQ para aceitar múltiplas requisições, colocar elas em fila, e executar uma a uma
+ - torná-lo um serviço na Nuvem, hospedando em um Azure, GCP ou DigitalOcean, por exemplo.
+ - Realizar os tratamentos de erros, captura das mensagens de erros/sucesso, informação do total de arquivos localizados/baixados. Criar stamps de Data/Hora.
+ - Utilizar um BD para guardar os registros das datas já pesquisadas, agilizando quando realizar uma busca de uma data que já foi processada anteriormente.
