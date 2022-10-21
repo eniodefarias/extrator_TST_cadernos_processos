@@ -1,0 +1,120 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="107">
+            <item index="0" class="java.lang.String" itemvalue="functools32" />
+            <item index="1" class="java.lang.String" itemvalue="PyYAML" />
+            <item index="2" class="java.lang.String" itemvalue="csv" />
+            <item index="3" class="java.lang.String" itemvalue="ufw" />
+            <item index="4" class="java.lang.String" itemvalue="psycopg2" />
+            <item index="5" class="java.lang.String" itemvalue="utilities" />
+            <item index="6" class="java.lang.String" itemvalue="distro-info" />
+            <item index="7" class="java.lang.String" itemvalue="rrule" />
+            <item index="8" class="java.lang.String" itemvalue="systemd-python" />
+            <item index="9" class="java.lang.String" itemvalue="A4" />
+            <item index="10" class="java.lang.String" itemvalue="PyNaCl" />
+            <item index="11" class="java.lang.String" itemvalue="language-selector" />
+            <item index="12" class="java.lang.String" itemvalue="text" />
+            <item index="13" class="java.lang.String" itemvalue="zipfile" />
+            <item index="14" class="java.lang.String" itemvalue="meld" />
+            <item index="15" class="java.lang.String" itemvalue="DesiredCapabilities" />
+            <item index="16" class="java.lang.String" itemvalue="encoders" />
+            <item index="17" class="java.lang.String" itemvalue="rabbitvcs" />
+            <item index="18" class="java.lang.String" itemvalue="python-apt" />
+            <item index="19" class="java.lang.String" itemvalue="SMTPException" />
+            <item index="20" class="java.lang.String" itemvalue="2" />
+            <item index="21" class="java.lang.String" itemvalue="re" />
+            <item index="22" class="java.lang.String" itemvalue="4" />
+            <item index="23" class="java.lang.String" itemvalue="utf-8" />
+            <item index="24" class="java.lang.String" itemvalue="util" />
+            <item index="25" class="java.lang.String" itemvalue="action_chains" />
+            <item index="26" class="java.lang.String" itemvalue="logging" />
+            <item index="27" class="java.lang.String" itemvalue="pyliblzma" />
+            <item index="28" class="java.lang.String" itemvalue="MIMEText" />
+            <item index="29" class="java.lang.String" itemvalue="pygobject" />
+            <item index="30" class="java.lang.String" itemvalue="drivers" />
+            <item index="31" class="java.lang.String" itemvalue="idna" />
+            <item index="32" class="java.lang.String" itemvalue="FTP" />
+            <item index="33" class="java.lang.String" itemvalue="26" />
+            <item index="34" class="java.lang.String" itemvalue="ftplib" />
+            <item index="35" class="java.lang.String" itemvalue="cffi" />
+            <item index="36" class="java.lang.String" itemvalue="glob" />
+            <item index="37" class="java.lang.String" itemvalue="requests" />
+            <item index="38" class="java.lang.String" itemvalue="SafraDeclaracaoResidencia" />
+            <item index="39" class="java.lang.String" itemvalue="by" />
+            <item index="40" class="java.lang.String" itemvalue="DriverFactory" />
+            <item index="41" class="java.lang.String" itemvalue="dateutil" />
+            <item index="42" class="java.lang.String" itemvalue="ImageReader" />
+            <item index="43" class="java.lang.String" itemvalue="email" />
+            <item index="44" class="java.lang.String" itemvalue="ubuntu-drivers-common" />
+            <item index="45" class="java.lang.String" itemvalue="xkit" />
+            <item index="46" class="java.lang.String" itemvalue="guess_type" />
+            <item index="47" class="java.lang.String" itemvalue="torbrowser-launcher" />
+            <item index="48" class="java.lang.String" itemvalue="smtplib" />
+            <item index="49" class="java.lang.String" itemvalue="By" />
+            <item index="50" class="java.lang.String" itemvalue="unicodedata" />
+            <item index="51" class="java.lang.String" itemvalue="ActionChains" />
+            <item index="52" class="java.lang.String" itemvalue="WebDriverWait" />
+            <item index="53" class="java.lang.String" itemvalue="usb-creator" />
+            <item index="54" class="java.lang.String" itemvalue="Twisted" />
+            <item index="55" class="java.lang.String" itemvalue="date" />
+            <item index="56" class="java.lang.String" itemvalue="safra" />
+            <item index="57" class="java.lang.String" itemvalue="Brlapi" />
+            <item index="58" class="java.lang.String" itemvalue="available" />
+            <item index="59" class="java.lang.String" itemvalue="pycups" />
+            <item index="60" class="java.lang.String" itemvalue="Utilities" />
+            <item index="61" class="java.lang.String" itemvalue="urllib" />
+            <item index="62" class="java.lang.String" itemvalue="certifi" />
+            <item index="63" class="java.lang.String" itemvalue="driversfactory" />
+            <item index="64" class="java.lang.String" itemvalue="MIMEBase" />
+            <item index="65" class="java.lang.String" itemvalue="webdriver" />
+            <item index="66" class="java.lang.String" itemvalue="from" />
+            <item index="67" class="java.lang.String" itemvalue="robots" />
+            <item index="68" class="java.lang.String" itemvalue="unattended-upgrades" />
+            <item index="69" class="java.lang.String" itemvalue="Engine" />
+            <item index="70" class="java.lang.String" itemvalue="gpg" />
+            <item index="71" class="java.lang.String" itemvalue="pagesizes" />
+            <item index="72" class="java.lang.String" itemvalue="chrome" />
+            <item index="73" class="java.lang.String" itemvalue="wstools" />
+            <item index="74" class="java.lang.String" itemvalue="cryptography" />
+            <item index="75" class="java.lang.String" itemvalue="pdfshuffler" />
+            <item index="76" class="java.lang.String" itemvalue="exceptions" />
+            <item index="77" class="java.lang.String" itemvalue="basename" />
+            <item index="78" class="java.lang.String" itemvalue="progressbar" />
+            <item index="79" class="java.lang.String" itemvalue="inspect" />
+            <item index="80" class="java.lang.String" itemvalue="support" />
+            <item index="81" class="java.lang.String" itemvalue="gyp" />
+            <item index="82" class="java.lang.String" itemvalue="mimetypes" />
+            <item index="83" class="java.lang.String" itemvalue="since" />
+            <item index="84" class="java.lang.String" itemvalue="defer" />
+            <item index="85" class="java.lang.String" itemvalue="import" />
+            <item index="86" class="java.lang.String" itemvalue="vboxapi" />
+            <item index="87" class="java.lang.String" itemvalue="apturl" />
+            <item index="88" class="java.lang.String" itemvalue="sys" />
+            <item index="89" class="java.lang.String" itemvalue="key-mon" />
+            <item index="90" class="java.lang.String" itemvalue="cupshelpers" />
+            <item index="91" class="java.lang.String" itemvalue="pdfgen" />
+            <item index="92" class="java.lang.String" itemvalue="expected_conditions" />
+            <item index="93" class="java.lang.String" itemvalue="louis" />
+            <item index="94" class="java.lang.String" itemvalue="urllib3" />
+            <item index="95" class="java.lang.String" itemvalue="r_safra_009_declaracao_residencia" />
+            <item index="96" class="java.lang.String" itemvalue="os" />
+            <item index="97" class="java.lang.String" itemvalue="system-service" />
+            <item index="98" class="java.lang.String" itemvalue="MIMEApplication" />
+            <item index="99" class="java.lang.String" itemvalue="MIMEMultipart" />
+            <item index="100" class="java.lang.String" itemvalue="application" />
+            <item index="101" class="java.lang.String" itemvalue="shutil" />
+            <item index="102" class="java.lang.String" itemvalue="command-not-found" />
+            <item index="103" class="java.lang.String" itemvalue="socket" />
+            <item index="104" class="java.lang.String" itemvalue="time" />
+            <item index="105" class="java.lang.String" itemvalue="append" />
+            <item index="106" class="java.lang.String" itemvalue="NoSuchElementException" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
