@@ -109,6 +109,11 @@ Para realizar a extração dos arquivos do dite será utilizado o Selenium e um 
 Para uma maior compatibilidade será usado o chromedriver, preferencialmente sempre a versão estável mais recente.
  - [controle de versões do chromedrive](src/webdriver/chromedriver/version.md)  
 
+Dica chrome:
+ - parametro para defir um diretorio para o usuario:
+   - ```"C:\Program Files\Google\Chrome\Application\chrome.exe" --user-data-dir=C:\App\chrome\02 --restore-last-session```
+ 
+
 ### PyPDF2, Tabula, Tika
 É necessário utilizar uma biblioteca para fazer a leitura do arquivo pdf e extrair seu conteudo em formato de texto.  
 Em seguida realizar um parser ou find para coletar as strings com os termos de para localizar e extrair os "Processos"
@@ -118,6 +123,21 @@ Em seguida realizar um parser ou find para coletar as strings com os termos de p
  - https://www.hashtagtreinamentos.com/ler-tabelas-em-pdf-com-python?gclid=CjwKCAjwwL6aBhBlEiwADycBIP5IlXlBAGNeCccMVSLiewxB8dP67xzJxJjX5V-1mVE1I27tRejMdRoC22EQAvD_BwE
  - PyPDF2, Tabula: https://www.computersciencemaster.com.br/como-ler-pdf-com-python/
  - Tika: https://dadosaocubo.com/extraindo-texto-de-arquivos-pdf-com-python/
+
+### converter py em exe
+
+#### dicas:
+ - https://pt.stackoverflow.com/questions/316707/converter-python-em-exe
+ - http://ptcomputador.com/P/python-programming/94137.html
+ - cx_Freeze: https://www.alura.com.br/artigos/criando-um-executavel-a-partir-de-um-programa-python
+ - https://www.pyinstaller.org/
+ - http://www.py2exe.org/
+ - https://anthony-tuininga.github.io/cx_Freeze/
+ - py_compile: https://pt.stackoverflow.com/questions/432012/converter-arquivos-py-para-arquivos-exe
+ - https://pt.stackoverflow.com/questions/13806/como-criar-um-execut%C3%A1vel-exe-em-python
+ - https://pyoxidizer.readthedocs.io/en/latest/
+ - https://shiv.readthedocs.io/en/latest/
+ - cx_Freeze win32: https://pt.stackoverflow.com/questions/183381/como-criar-um-execut%C3%A1vel-a-partir-de-python
 
 ### Pandas
 Será utilizado o pandas para gerar os arquivos arquivos xls com os resultados das consultas conforme informado no Briefing.
