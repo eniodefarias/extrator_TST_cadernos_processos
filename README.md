@@ -95,6 +95,7 @@ Link do tribunal: [https://dejt.jt.jus.br/dejt/f/n/diariocon](https://dejt.jt.ju
 3. fazer um parser e capturar as propostas como no exemplo ```Processo Nº CorPar-1000794-13.2022.5.00.0000```
    1. normalmente há uma quebra de linha antes
    2. a linha começa por ```Processo Nº ``` e termina com um número ```[0-9]```
+      1. use o regex: ```^Processo Nº.*.[0-9]$``` 
    3. atenção para falso positivo do "Processo Nº" no meio de textos que não um "título"
 
     <picture>
@@ -125,6 +126,12 @@ Dica chrome:
 ### PyPDF2, Tabula, Tika
 É necessário utilizar uma biblioteca para fazer a leitura do arquivo pdf e extrair seu conteudo em formato de texto.  
 Em seguida realizar um parser ou find para coletar as strings com os termos de para localizar e extrair os "Processos"
+
+#### Tika
+- utilizado o tika pela facilidade, basta duas linhas para extrair o texto:
+  - ```raw = parser.from_file(f'{arquivo}')```
+  - ```print(raw['content'])```
+
 
 #### dicas
  - http://theautomatic.net/2020/01/21/how-to-read-pdf-files-with-python/#:~:text=To%20read%20PDF%20files%20with%20Python%2C%20we%20can%20focus%20most,able%20to%20highlight%20the%20text.

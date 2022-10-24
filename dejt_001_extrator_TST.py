@@ -48,6 +48,9 @@ from datetime import timedelta
 from datetime import time
 import time as ttime
 
+from tika import parser
+
+
 print('inicio')
 
 
@@ -354,8 +357,16 @@ class start_robo ():
                 print(f'         data: {data}')
                 print(f'       titulo: {titulo}')
                 print(f'      arquivo: {arquivo}')
+
+                raw = parser.from_file(f'{arquivo}')
+
+                print(f'raw:\n\n\n{raw}\n\n\n')
+
+                self.util.sobrescrever_arquivo(arquivo+'.txt', raw['content'])
+
                 counter += 1
-                ttime.sleep(5)
+                #ttime.sleep(15)
+
 
         except Exception as e:
             self.logger.error(f'ERRO ao ler os PDFs baixados:  {e}')
