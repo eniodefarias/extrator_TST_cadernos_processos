@@ -68,7 +68,9 @@ class start_robo ():
         self.erros_gatilho = 0
         self.inicioExecucao = time()
 
-        self.hora_de_inicio_processo=datetime.today().strftime("%Y/%m/%d %H:%M:%S")
+        agora=datetime.today()
+        self.hora_de_inicio_processo=agora.strftime("%Y/%m/%d %H:%M:%S")
+
 
         ###Dados do Robô
         self.status = "Sucesso"
@@ -102,7 +104,7 @@ class start_robo ():
         windir = self.config[f'{self.robo_nome}']['windir']
         self.dir = self.config[f'{self.robo_nome}']['dir']
         self.dir_download = self.dir + '/Downloads'
-        self.output = self.config[f'{self.robo_nome}']['output']
+        self.output = self.config[f'{self.robo_nome}']['output'] + '/extracao_de_' + agora.strftime("%d-%m-%Y_%Hh%M")
 
 
         self.url_diario = self.config[f'{self.robo_nome}']['url_diario']
@@ -214,7 +216,8 @@ class start_robo ():
 
             ontem = hoje - timedelta(days=1)
             data_ontem = ontem.strftime("%d/%m/%Y")
-            semana_passada = ontem - timedelta(days=30)
+            semana_passada = ontem - timedelta(days=7)
+            #semana_passada = ontem - timedelta(days=2)
             data_semana_passada = semana_passada.strftime("%d/%m/%Y")
 
 
@@ -342,6 +345,7 @@ class start_robo ():
 
             #ttime.sleep(20)
 
+            self.forca_fechar()
             self.leitor_pdf(list_files)
 
         except Exception as e:
@@ -351,16 +355,18 @@ class start_robo ():
     def leitor_pdf(self, list_files):
         try:
             self.logger.info(f'iniciando leitura de PDFs')
+            #lista_controle = []
+            lista_csv = []
 
-
-
+            self.util.agregar_arquivo(self.output + f'/TST_Relatorio.csv', f'data;titulo;qtde_processos;arquivo')
 
 
             counter=0
             qtde=len(list_files)
 
             while counter < qtde:
-                self.logger.info(f'lendo PDF ({counter}): {list_files[counter]}')
+                print('\n\n')
+                #self.logger.info(f'lendo PDF ({counter}): {list_files[counter]}')
                 data=list_files[counter][0]
                 data_und = f'{data}'.replace('/','-')
                 titulo=list_files[counter][1]
@@ -368,7 +374,7 @@ class start_robo ():
                 print(f'         data: {data}')
                 print(f'       titulo: {titulo}')
                 print(f'      arquivo: {arquivo}')
-
+                self.logger.info(f'Iniciando PDF {counter} de {qtde}: {data};{titulo}')
                 self.logger.warning(f'Por favor, tenha paciência, demora um pouquinho quando o PDF é grande!')
 
                 raw = parser.from_file(f'{arquivo}')
@@ -382,7 +388,7 @@ class start_robo ():
 
                 qtde_process=len(processos)
                 #print(f'processos: {processos}')
-                self.logger.info(f'{data};{titulo}: localizado {qtde_process} processos')
+                #self.logger.info(f'{data};{titulo}: localizado {qtde_process} processos')
 
                 #print(f'total: {len(processos)}')
 
@@ -390,6 +396,13 @@ class start_robo ():
 
                 processos_texto = self.util.converte_lista_para_texto(processos, '\n')
                 self.util.agregar_arquivo(self.output+f'/TST_{data_und}.csv',processos_texto)
+
+                #lista_controle.append(f'{data};{titulo};{qtde_process};{arquivo}')
+
+                self.util.agregar_arquivo(self.output+f'/TST_Relatorio.csv',f'{data};{titulo};{qtde_process};{arquivo}')
+
+
+                lista_csv.append(self.output+f'/TST_{data_und}.csv')
 
                 #print(f'processos_texto:{processos_texto}')
 
@@ -399,18 +412,57 @@ class start_robo ():
                 #for item in self.progressBar(self.escreve_saida(processos,data,titulo), prefix='Progress:', suffix='Complete', length=50):
                 #    # Do stuff...
                 #    ttime.sleep(0.1)
+                #df = pd.read_csv(f'{self.dir_output_csv}/{nome_arquivo_final}.csv', sep=',', decimal='.', encoding='iso-8859-1')
+
+
+                #df1.to_csv(f'{self.dir_output_final_padrao_DAVI}/{novo_nome}.csv', sep=',', index=False)
 
 
                 self.util.sobrescrever_arquivo(arquivo+'.txt', raw['content'])
-                print(f'acabou arquivo: {arquivo}')
-
+                #print(f'acabou arquivo: {arquivo}')
+                self.logger.info(f'Finalizado PDF {counter} de {qtde} com {qtde_process} processos: {data};{titulo} ')
+                print('\n\n')
 
                 counter += 1
                 #ttime.sleep(10)
 
+            df = pd.read_csv(self.output+f'/TST_Relatorio.csv', sep=';', encoding='utf-8')
+            #headers = ["Processos"]
+            #df.columns = headers
 
+            #xls = f'{csv}'.replace('.csv', '.xls')
+            #print(f'xls: {xls}')
+            df.to_excel(self.output+f'/TST_Relatorio.xls', index=False, sheet_name='Processos')
+            os.remove(self.output+f'/TST_Relatorio.csv')
+
+            self.converte_csv_xls(lista_csv)
         except Exception as e:
             self.logger.error(f'ERRO ao ler os PDFs baixados:  {e}')
+
+    def converte_csv_xls(self,lista_csv):
+
+        #mylist = ["a", "b", "a", "c", "c"]
+        #mylist = list(dict.fromkeys(mylist))
+        #print(mylist)
+
+        lista_csv = list(dict.fromkeys(lista_csv))
+
+
+
+        print(f'lista_csv: {lista_csv}')
+
+        for csv in lista_csv:
+            print(f'csv: {csv}')
+            #df = pd.read_csv(f'{csv}', sep=';', decimal='.', encoding='utf-8')
+            df = pd.read_csv(f'{csv}', sep=';',  encoding='utf-8')
+            headers = ["Processos"]
+            df.columns = headers
+
+            xls = f'{csv}'.replace('.csv','.xls')
+            print(f'xls: {xls}')
+            df.to_excel(f'{xls}', index=False, sheet_name='Processos')
+            os.remove(f'{csv}')
+
 
     def escreve_saida(self, processos, data, titulo):
         for procss in processos:

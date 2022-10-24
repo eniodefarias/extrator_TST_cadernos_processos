@@ -1,5 +1,9 @@
 # Extrator de processos dos cadernos do TST
 
+![tempo de desenvolvimento](https://wakatime.com/badge/user/739793a6-a4fb-4d88-b1e6-f79a9182d930/project/0636c7e1-b84d-4a9a-a005-047a7b6c01b3.svg)
+
+
+
 # Extrator
   
 A execução deste programa iniciará o fluxo de extração dos dados.  
@@ -15,9 +19,10 @@ A execução deste programa iniciará o fluxo de extração dos dados.
    - organizar as informações coletadas dos Nº de processos
    - compilar os dados nos arquivos de saida em csv
          - configurar o webdriver e ajuste fino para headless
+   - compilar os dados nos arquivos de saida em XLS
+   - gerado relatorio em xls com os titulos, datas e qtde de processos encontrados
 
  - faltam poucas funções para concluir:
-   - compilar os dados nos arquivos de saida em XLS
    - configurar o docker
    - converter para um executável .exe para windows
 
