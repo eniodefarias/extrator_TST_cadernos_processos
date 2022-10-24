@@ -192,6 +192,22 @@ class start_robo ():
 
     def pesquisar_TST(self):
         try:
+
+            #N_DAYS_AGO = 5
+            #today = datetime.now()
+            #n_days_ago = today - timedelta(days=N_DAYS_AGO)
+            #print today, n_days_ago
+
+            hoje = datetime.today()
+            #data_hoje = datetime.today().strftime("%d/%m/%Y")
+            data_hoje = hoje.strftime("%d/%m/%Y")
+
+            ontem = hoje - timedelta(days=1)
+            data_ontem = ontem.strftime("%d/%m/%Y")
+            semana_passada = ontem - timedelta(days=6)
+            data_semana_passada = semana_passada.strftime("%d/%m/%Y")
+
+
             self.logger.info(f'abrindo url {self.url_diario}')
             #ttime.sleep(3)
             self.driver.get(self.url_diario)
@@ -209,19 +225,21 @@ class start_robo ():
 
             self.logger.info(f'procurando xpath_input_dataini')
             xpath_input_dataini = WebDriverWait(self.driver, 20).until(EC.presence_of_element_located((By.XPATH, f'{self.xpath_input_dataini}')))
-            self.logger.info(f'vai colocando dataini')
+            self.logger.info(f'vai colocando dataini={data_semana_passada}')
             xpath_input_dataini.clear()
             #ttime.sleep(1)
-            xpath_input_dataini.send_keys('17/10/2022')
+            #xpath_input_dataini.send_keys('17/10/2022')
+            xpath_input_dataini.send_keys(f'{data_semana_passada}')
             #ttime.sleep(1)
 
 
             self.logger.info(f'procurando xpath_input_datafim')
             xpath_input_datafim = WebDriverWait(self.driver, 20).until(EC.presence_of_element_located((By.XPATH, f'{self.xpath_input_datafim}')))
-            self.logger.info(f'colocando datafim')
+            self.logger.info(f'colocando datafim={data_ontem}')
             xpath_input_datafim.clear()
             #ttime.sleep(1)
-            xpath_input_datafim.send_keys('24/10/2022')
+            #xpath_input_datafim.send_keys('24/10/2022')
+            xpath_input_datafim.send_keys(f'{data_ontem}')
             #ttime.sleep(3)
 
 
@@ -260,6 +278,9 @@ class start_robo ():
 
 
     def download_cadernos(self):
+
+        list_files = []
+
         try:
             self.logger.info('iniciando procedimento de download dos cadernos')
 
@@ -282,7 +303,7 @@ class start_robo ():
             self.logger.debug(f'qtde_tr = {qtde_tr}')
             counter_tr = 1
             for linha_tr in list_xpath_linha_TR_resultados:
-
+                date_file = []
                 data = self.driver.find_element(by=By.XPATH, value=f'({self.xpath_linha_TR_resultados})[{counter_tr}]/td[1]').text.strip(' ').strip('\n').strip(' ')
                 titulo = self.driver.find_element(by=By.XPATH, value=f'({self.xpath_linha_TR_resultados})[{counter_tr}]/td[2]').text.strip(' ').strip('\n').strip(' ')
                 link = self.driver.find_element(by=By.XPATH, value=f'({self.xpath_linha_TR_resultados})[{counter_tr}]/td[3]')
@@ -295,20 +316,49 @@ class start_robo ():
                 nome_arq_baixado = self.util.pegar_nome_arquivo(arq_baixado)
                 ext_arq = f'{arq_baixado}'.split('.')[-1]
                 titulo_edit = self.util.somente_letras_numeros_espaco_ponto(self.util.removedor_acentuacao(f'{titulo}')).replace(" ","_")
-                self.util.mover_arquivo(arq_baixado, f'{self.dir}/{counter_tr}_{titulo_edit}____{nome_arq_baixado}.{ext_arq}')
+                novo_nome=f'{self.dir}/{counter_tr}_{titulo_edit}____{nome_arq_baixado}.{ext_arq}'
+                self.util.mover_arquivo(arq_baixado, novo_nome)
                 #ttime.sleep(1)
+                date_file.append(f'{data}')
+                date_file.append(f'{titulo}')
+                date_file.append(f'{novo_nome}')
 
+                list_files.append(date_file)
 
                 #self.logger.debug(f'varrendo linha {counter_tr} = {linha_tr.text}')
 
                 counter_tr += 1
 
 
-            ttime.sleep(20)
+            #ttime.sleep(20)
+
+            self.leitor_pdf(list_files)
 
         except Exception as e:
             self.logger.error(f'ERRO ao baixar cadernos:  {e}')
 
+
+    def leitor_pdf(self, list_files):
+        try:
+            self.logger.info(f'iniciando leitura de PDFs')
+
+
+            counter=0
+            qtde=len(list_files)
+
+            while counter < qtde:
+                self.logger.info(f'lendo PDF ({counter}): {list_files[counter]}')
+                data=list_files[counter][0]
+                titulo=list_files[counter][1]
+                arquivo=list_files[counter][2]
+                print(f'         data: {data}')
+                print(f'       titulo: {titulo}')
+                print(f'      arquivo: {arquivo}')
+                counter += 1
+                ttime.sleep(5)
+
+        except Exception as e:
+            self.logger.error(f'ERRO ao ler os PDFs baixados:  {e}')
 
     def xxxxxx(self):
         ### Cria logger
