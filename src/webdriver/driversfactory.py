@@ -4,7 +4,9 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver import DesiredCapabilities
 import configparser
-from src.util.utilities import Utilities
+from src.util.utilities2 import Utilities
+import sys
+import os
 
 class DriverFactory:
 
@@ -24,10 +26,14 @@ class DriverFactory:
     # def create_driver(self, type, headless=False, path_to_download=None, install_extension=None, largura=1440, altura=900):
     def create_driver(self, type, headless=False, path_to_download=None, install_extension=None, largura=800, altura=800, kiosk=False):
         try:
-            util = Utilities()
+            #util = Utilities()
+            util = Utilities(sys.argv[0], os.getpid(), test_config_dir_direto=True)
             config = util.get_config()
             #config = configparser.ConfigParser()
             #config.read('config/config.ini')
+
+            print(f'path_to_download = {path_to_download}')
+
 
             try:
                 dir_extensions = config['extensions_chrome']['dir_extensions']

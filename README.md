@@ -39,6 +39,10 @@ o Ex. TST 13/10/2022.xlsx
 
 Link do tribunal: [https://dejt.jt.jus.br/dejt/f/n/diariocon](https://dejt.jt.jus.br/dejt/f/n/diariocon)
 
+## Modelo visual
+
+[![Video com modelo de download dos pdfs](img/exemplo_download_pdf.png)](https://youtu.be/62qeK5zX1yI "Video com modelo de download dos pdfs")
+
 
 ## Algoritmo
 
@@ -52,7 +56,7 @@ Link do tribunal: [https://dejt.jt.jus.br/dejt/f/n/diariocon](https://dejt.jt.ju
 3. localizar o value TST
    1. xpath: ```//*[@id="corpo:formulario:tribunal"]/option[2]```
    2. atualmente está no value="0"
-      1. o melhor é mapear pela string "TST"
+      1. o melhor é mapear pela string "TST" --> ```//option[contains(text(),'TST')]```
 4. inserir a data no campo "Data de Inicio"
    1. ```//input[@id='corpo:formulario:dataIni']```
    2. usar o id 'corpo:formulario:dataIni' 
