@@ -41,7 +41,8 @@ Link do tribunal: [https://dejt.jt.jus.br/dejt/f/n/diariocon](https://dejt.jt.ju
 
 ## Modelo visual
 
-[![Video com modelo de download dos pdfs](img/exemplo_download_pdf.png)](https://youtu.be/62qeK5zX1yI "Video com modelo de download dos pdfs")
+ - Download dos arquivos pdf um de cada vez, com controle de fim de download antes de começar o próximo, e renomear o pdf para ter o mesmo titulo do caderno
+   - Video demonstrativo da função em execução [![Video com modelo de download dos pdfs](img/exemplo_download_pdf.png)](https://youtu.be/62qeK5zX1yI "Video com modelo de download dos pdfs")
 
 
 ## Algoritmo
