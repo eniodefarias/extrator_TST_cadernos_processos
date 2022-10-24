@@ -11,12 +11,13 @@ A execução deste programa iniciará o fluxo de extração dos dados.
    - verifica se há pdfs para baixar
    - baixa todos os pdfs da fila
    - extrai os textos em raw dos pdfs com o Tika
-
- - faltam poucas funções para concluir:
    - fazer o parser no texto dos pdfs
    - organizar as informações coletadas dos Nº de processos
-   - compilar os dados nos arquivos de saida
-   - configurar o webdriver e ajuste fino para headless
+   - compilar os dados nos arquivos de saida em csv
+         - configurar o webdriver e ajuste fino para headless
+
+ - faltam poucas funções para concluir:
+   - compilar os dados nos arquivos de saida em XLS
    - configurar o docker
    - converter para um executável .exe para windows
 
@@ -83,6 +84,13 @@ Link do tribunal: [https://dejt.jt.jus.br/dejt/f/n/diariocon](https://dejt.jt.ju
    1. mapear o xpath ```//div[@class='plc-corpo-acao-t'][contains(.,'Pesquisar')]```
 
 #### Coleta dos resultados:  
+
+##### Mensagens esperadas
+ - Nenhuma = _provavelmete tudo certo, ou algo ainda não mapeado_
+ - tempo de login expirado = ```The conversation ended, timed out or was processing another request```
+ - não localizou nenhum arquivo = ```Nenhum registro que atende aos critérios informados foi encontrado! Refine a pesquisa por outro parâmetro!```
+
+
 
 ##### Em caso de erro:
 1. verificar se há erro:  

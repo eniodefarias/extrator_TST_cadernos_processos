@@ -160,8 +160,15 @@ class start_robo ():
         try:
             print('\n\n\n\n')
             self.logger.info('Iniciando extração')
-            self.headless=False
+            #self.headless=False
+
             self.navegacao()
+
+
+            #list_files=[['20/10/2022', 'Edição 3583/2022 - Caderno do Tribunal Superior do Trabalho - Judiciário', 'TMP/dejt_extrator_TST/2_Edicao_35832022__Caderno_do_Tribunal_Superior_do_Trabalho__Judiciario____Diario_3583__20_10_2022.pdf.pdf'],['21/10/2022', 'Edição 3584/2022 - Caderno do Tribunal Superior do Trabalho - Judiciário', 'TMP/dejt_extrator_TST/1_Edicao_35842022__Caderno_do_Tribunal_Superior_do_Trabalho__Judiciario____Diario_3584__21_10_2022.pdf.pdf']]
+
+            #self.leitor_pdf(list_files)
+
 
         except Exception as e:
             self.logger.info(f'ERRO na extração: {e}')
@@ -207,7 +214,7 @@ class start_robo ():
 
             ontem = hoje - timedelta(days=1)
             data_ontem = ontem.strftime("%d/%m/%Y")
-            semana_passada = ontem - timedelta(days=6)
+            semana_passada = ontem - timedelta(days=30)
             data_semana_passada = semana_passada.strftime("%d/%m/%Y")
 
 
@@ -346,30 +353,100 @@ class start_robo ():
             self.logger.info(f'iniciando leitura de PDFs')
 
 
+
+
+
             counter=0
             qtde=len(list_files)
 
             while counter < qtde:
                 self.logger.info(f'lendo PDF ({counter}): {list_files[counter]}')
                 data=list_files[counter][0]
+                data_und = f'{data}'.replace('/','-')
                 titulo=list_files[counter][1]
                 arquivo=list_files[counter][2]
                 print(f'         data: {data}')
                 print(f'       titulo: {titulo}')
                 print(f'      arquivo: {arquivo}')
 
+                self.logger.warning(f'Por favor, tenha paciência, demora um pouquinho quando o PDF é grande!')
+
                 raw = parser.from_file(f'{arquivo}')
 
-                print(f'raw:\n\n\n{raw}\n\n\n')
+                #print(f'raw:\n\n\n{raw}\n\n\n')
+
+                #processos = re.findall(r'^Processo Nº.*.[0-9]$', raw['content'])
+                processosN = re.findall(r'\nProcesso Nº.*.[0-9]\n', raw['content'])
+                processos = [s.replace('\n','') for s in processosN]
+
+
+                qtde_process=len(processos)
+                #print(f'processos: {processos}')
+                self.logger.info(f'{data};{titulo}: localizado {qtde_process} processos')
+
+                #print(f'total: {len(processos)}')
+
+                #self.escreve_saida(processos, data, titulo)
+
+                processos_texto = self.util.converte_lista_para_texto(processos, '\n')
+                self.util.agregar_arquivo(self.output+f'/TST_{data_und}.csv',processos_texto)
+
+                #print(f'processos_texto:{processos_texto}')
+
+
+                #self.escreve_saida(processos, data, titulo)
+
+                #for item in self.progressBar(self.escreve_saida(processos,data,titulo), prefix='Progress:', suffix='Complete', length=50):
+                #    # Do stuff...
+                #    ttime.sleep(0.1)
+
 
                 self.util.sobrescrever_arquivo(arquivo+'.txt', raw['content'])
+                print(f'acabou arquivo: {arquivo}')
+
 
                 counter += 1
-                #ttime.sleep(15)
+                #ttime.sleep(10)
 
 
         except Exception as e:
             self.logger.error(f'ERRO ao ler os PDFs baixados:  {e}')
+
+    def escreve_saida(self, processos, data, titulo):
+        for procss in processos:
+            #                    print(f'procss: {procss}')
+            proc = f'{procss}'.strip('\n')
+            self.util.agregar_arquivo(self.dir + 'saida.txt', f'{data};{titulo};{proc}')
+
+    def progressBar(iterable, prefix='', suffix='', decimals=1, length=100, fill='█', printEnd="\r"):
+        """
+        Call in a loop to create terminal progress bar
+        @params:
+            iterable    - Required  : iterable object (Iterable)
+            prefix      - Optional  : prefix string (Str)
+            suffix      - Optional  : suffix string (Str)
+            decimals    - Optional  : positive number of decimals in percent complete (Int)
+            length      - Optional  : character length of bar (Int)
+            fill        - Optional  : bar fill character (Str)
+            printEnd    - Optional  : end character (e.g. "\r", "\r\n") (Str)
+        """
+        total = len(iterable)
+
+        # Progress Bar Printing Function
+        def printProgressBar(iteration):
+            percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
+            filledLength = int(length * iteration // total)
+            bar = fill * filledLength + '-' * (length - filledLength)
+            print(f'\r{prefix} |{bar}| {percent}% {suffix}', end=printEnd)
+
+        # Initial Call
+        printProgressBar(0)
+        # Update Progress Bar
+        for i, item in enumerate(iterable):
+            yield item
+            printProgressBar(i + 1)
+        # Print New Line on Complete
+        print()
 
     def xxxxxx(self):
         ### Cria logger
