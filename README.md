@@ -104,6 +104,9 @@ Link do tribunal: [https://dejt.jt.jus.br/dejt/f/n/diariocon](https://dejt.jt.ju
 
 ## Bibliotecas
 
+### Python
+ - utilizado python version 3.9.2
+
 ### Selenium e Webdriver
 Para realizar a extração dos arquivos do dite será utilizado o Selenium e um webdriver.  
 Para uma maior compatibilidade será usado o chromedriver, preferencialmente sempre a versão estável mais recente.
