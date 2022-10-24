@@ -3,7 +3,22 @@
 # Extrator
   
 A execução deste programa iniciará o fluxo de extração dos dados.  
-💡 por uma questão de tempo para entrega, esta versão é um MVP e realizará o processo mínimo para atender a solicitação. Com muita tristeza 🥲 no coração serão ignorados alguns controles de e prevenções de erro, mas na próxima versão serão tratados e contigênciados para uma melhor performance.
+ - 💡 neste momento o projeto está em 80%, executando as etapas
+   - abre o site com selenium e chromedriver
+   - seleciona o tipo TST
+   - insere data Ini e Fim
+   - clica em pesquisar
+   - verifica se há pdfs para baixar
+   - baixa todos os pdfs da fila
+   - extrai os textos em raw dos pdfs com o Tika
+
+ - faltam poucas funções para concluir:
+   - fazer o parser no texto dos pdfs
+   - organizar as informações coletadas dos Nº de processos
+   - compilar os dados nos arquivos de saida
+   - configurar o webdriver e ajuste fino para headless
+   - configurar o docker
+   - converter para um executável .exe para windows
 
 ## Requisitos
 
