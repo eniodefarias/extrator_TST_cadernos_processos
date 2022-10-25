@@ -49,6 +49,10 @@ ECHO .
 ECHO .
 ECHO .
 ECHO Digite ENTER para fechar esse terminal
+ECHO .
+ECHO .
+ECHO .
+pause
 move Instalador.bat TMP\
 exit
 
@@ -70,9 +74,14 @@ ECHO Apos instalar o DOCKER com o link acima, digite ENTER para finalizar a inst
 ECHO .
 ECHO .
 ECHO .
+pause
 set /p choice=Agora voce ja tem o DOCKER instalado neste computador? [S/N]
 if '%choice%'=='N' goto label2
 if '%choice%'=='Nao' goto label2
 if '%choice%'=='Não' goto label2
 if '%choice%'=='No' goto label2
+if '%choice%'=='n' goto label2
+if '%choice%'=='nao' goto label2
+if '%choice%'=='não' goto label2
+if '%choice%'=='no' goto label2
 label1
