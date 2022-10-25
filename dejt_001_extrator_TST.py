@@ -187,10 +187,10 @@ class start_robo ():
     def navegacao(self):
         try:
             self.forca_fechar()
-
+            dir_download = os.path.abspath(f'{self.dir_raiz}/{self.dir_download}')
             driverfactory = DriverFactory()
             ############                                                                                             A     L
-            self.driver = driverfactory.create_driver('chrome', self.headless, f'{self.dir_raiz}/{self.dir_download}', False, 900, 600)
+            self.driver = driverfactory.create_driver('chrome', self.headless, dir_download, False, 900, 600)
             self.driver.set_page_load_timeout(120)
             self.driver.implicitly_wait(9)
 
