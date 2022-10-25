@@ -66,10 +66,11 @@ ECHO ATENCAO, primeiro instale o programa DOCKER no computador antes de prossegu
 ECHO .
 ECHO link para download do DOCKER: https://docs.docker.com/desktop/install/windows-install/
 ECHO .
-start /MAX /D "https://docs.docker.com/desktop/install/windows-install/"
+ping -n 7 localhost > TMP\tmp.txt
+start explorer https://docs.docker.com/desktop/install/windows-install/
 
 ECHO .
-
+ping -n 7 localhost > TMP\tmp.txt
 ECHO Apos instalar o DOCKER com o link acima, digite ENTER para finalizar a instalacao do Extrator
 ECHO .
 ECHO .
