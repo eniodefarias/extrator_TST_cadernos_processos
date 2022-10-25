@@ -38,7 +38,7 @@ ECHO .
 ECHO .
 ECHO .
 
-START "Build da Imagem DOCKER" /WAIT /I /B %cd%  "docker build -t extrator_tst_cadernos_processos ."
+START "Build da Imagem DOCKER" /WAIT /I /B "%cd%"  "docker build -t extrator_tst_cadernos_processos ."
 
 ECHO .
 ECHO .
