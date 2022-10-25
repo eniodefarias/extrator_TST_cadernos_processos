@@ -12,13 +12,18 @@ ECHO .
 
 REM START "Instalacao DOCKER" /I /B src\win_Docker_Desktop_Installer.exe
 
-ECHO Voce ja tem o DOCKER instalado neste computador?
+REM ECHO Voce ja tem o DOCKER instalado neste computador?
 
 set /p choice=Voce ja tem o DOCKER instalado neste computador? [S/N]
 if '%choice%'=='N' goto label2
 if '%choice%'=='Nao' goto label2
 if '%choice%'=='Não' goto label2
 if '%choice%'=='No' goto label2
+if '%choice%'=='n' goto label2
+if '%choice%'=='nao' goto label2
+if '%choice%'=='não' goto label2
+if '%choice%'=='no' goto label2
+
 goto label1
 
 
