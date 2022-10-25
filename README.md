@@ -21,10 +21,10 @@ A execução deste programa iniciará o fluxo de extração dos dados.
          - configurar o webdriver e ajuste fino para headless
    - compilar os dados nos arquivos de saida em XLS
    - gerado relatorio em xls com os titulos, datas e qtde de processos encontrados
-
- - faltam poucas funções para concluir:
    - configurar o docker
-   - converter para um executável .exe para windows
+
+ - falta isso:
+   - converter para um executável .exe para windows -> mas acho que não vai rolar, está dando muitas incompatibilidades de OS, mas o Docker será mais eficiente!
 
 ## Requisitos
 
@@ -63,7 +63,7 @@ Link do tribunal: [https://dejt.jt.jus.br/dejt/f/n/diariocon](https://dejt.jt.ju
 ## Modelo visual
 
  - Download dos arquivos pdf um de cada vez, com controle de fim de download antes de começar o próximo, e renomear o pdf para ter o mesmo titulo do caderno
-   - Video demonstrativo da função em execução [![Video com modelo de download dos pdfs](img/exemplo_download_pdf.png)](https://youtu.be/62qeK5zX1yI "Video com modelo de download dos pdfs")
+   - Video demonstrativo da função em execução [![Video com modelo de download dos pdfs](src/img/exemplo_download_pdf.png)](https://youtu.be/62qeK5zX1yI "Video com modelo de download dos pdfs")
 
 
 ## Algoritmo
@@ -127,13 +127,13 @@ Link do tribunal: [https://dejt.jt.jus.br/dejt/f/n/diariocon](https://dejt.jt.ju
    3. atenção para falso positivo do "Processo Nº" no meio de textos que não um "título"
 
     <picture>
-      <img alt="exemplo de processo" src="img/exemplo_processo.png">
+      <img alt="exemplo de processo" src="src/img/exemplo_processo.png">
     </picture>
     <picture>
-      <img alt="exemplo de processo" src="img/exemplo_processo2.png">
+      <img alt="exemplo de processo" src="src/img/exemplo_processo2.png">
     </picture>
     <picture>
-      <img alt="exemplo de falso positivo" src="img/exemplo_falso_positivo.png">
+      <img alt="exemplo de falso positivo" src="src/img/exemplo_falso_positivo.png">
     </picture>
 
 ## Bibliotecas

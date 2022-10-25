@@ -1,12 +1,19 @@
+# -*- coding: utf-8 -*-
+#coding: utf-8
+import sys
+sys.path.append("..")
+
 import time
 import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver import DesiredCapabilities
 import configparser
-from src.util.utilities2 import Utilities
+#from src.util.utilities2 import Utilities
+from util.utilities2 import Utilities
 import sys
 import os
+
 
 class DriverFactory:
 
