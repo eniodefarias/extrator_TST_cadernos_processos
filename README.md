@@ -22,7 +22,7 @@
 ### Linux
  - realizar o [download deste repositório](https://github.com/eniodefarias/extrator_TST_cadernos_processos/archive/refs/heads/main.zip) em um diretório
  - descompactar 
- - no diretorio do projeto, exevutar o ```docker build```:
+ - no diretorio do projeto, executar o ```docker build```:
    - ```   docker build -t extrator_tst_cadernos_processos .   ```
  
 ## Usando o extrator
