@@ -41,7 +41,7 @@
 # Extrator: histórico e evolução
   
 A execução deste programa iniciará o fluxo de extração dos dados.  
- - 💡 neste momento o projeto está em 80%, executando as etapas
+ - 💡 neste momento o projeto está em 99,99%, executando as etapas
    - abre o site com selenium e chromedriver
    - seleciona o tipo TST
    - insere data Ini e Fim
@@ -56,7 +56,7 @@ A execução deste programa iniciará o fluxo de extração dos dados.
    - compilar os dados nos arquivos de saida em XLS
    - gerado relatorio em xls com os titulos, datas e qtde de processos encontrados
    - configurar o docker
-     - criado batch files .bat para windows para falicitar o ```docker build``` e o ```docker run``
+     - criado batch files .bat para windows para falicitar o ```docker build``` e o ```docker run```
 
  - falta isso:
    - converter para um executável .exe para windows -> mas acho que não vai rolar, está dando muitas incompatibilidades de OS, mas o Docker será mais eficiente!
@@ -175,7 +175,10 @@ Dica chrome:
 Em seguida realizar um parser ou find para coletar as strings com os termos de para localizar e extrair os "Processos"
 
 #### Tika
-- utilizado o tika pela facilidade, basta duas linhas para extrair o texto:
+
+⚠️é muito lento para arquivos grandes
+
+ - utilizado o tika pela facilidade, basta duas linhas para extrair o texto:
   - ```raw = parser.from_file(f'{arquivo}')```
   - ```print(raw['content'])```
 
