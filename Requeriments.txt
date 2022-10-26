@@ -2,6 +2,7 @@
 opencv-contrib-python
 opencv-python
 openpyxl
+xlsxwriter
 
 altgraph==0.17.3
 anticaptchaofficial==1.0.44

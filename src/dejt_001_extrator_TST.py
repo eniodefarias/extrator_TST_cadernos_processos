@@ -20,7 +20,7 @@ from datetime import datetime
 from datetime import date
 from datetime import timedelta
 from pyvirtualdisplay import Display
-
+import xlsxwriter
 #import time
 
 
@@ -229,8 +229,10 @@ class start_robo ():
             data_hoje = hoje.strftime("%d/%m/%Y")
 
             ontem = hoje - timedelta(days=1)
+            #ontem = hoje - timedelta(days=5)
             data_ontem = ontem.strftime("%d/%m/%Y")
             semana_passada = ontem - timedelta(days=7)
+            #semana_passada = ontem - timedelta(days=0)
             #semana_passada = ontem - timedelta(days=2)
             data_semana_passada = semana_passada.strftime("%d/%m/%Y")
 
@@ -375,11 +377,15 @@ class start_robo ():
             lista_csv = []
 
             self.util.agregar_arquivo(self.output + f'/TST_Relatorio.csv', f'data;titulo;qtde_processos;arquivo')
+            self.util.agregar_arquivo(self.output + f'/TST_Relatorio.csv', f'data;titulo;qtde_processos;arquivo')
+            self.util.agregar_arquivo(self.output + f'/TST_Relatorio.csv', f'data;titulo;qtde_processos;arquivo')
+            self.util.agregar_arquivo(self.output + f'/TST_Relatorio.csv', f'data;titulo;qtde_processos;arquivo')
+            self.util.agregar_arquivo(self.output + f'/TST_Relatorio.csv', f'data;titulo;qtde_processos;arquivo')
 
 
             counter=0
             qtde=len(list_files)
-
+            #counter = 100
             while counter < qtde:
                 print('\n')
                 #self.logger.info(f'lendo PDF ({counter}): {list_files[counter]}')
@@ -390,9 +396,9 @@ class start_robo ():
                 #print(f'         data: {data}')
                 #print(f'       titulo: {titulo}')
                 #print(f'      arquivo: {arquivo}')
-                self.logger.info(f'Iniciando PDF {counter} de {qtde}: {data};{titulo}')
-                self.logger.warning(f'Por favor, tenha paciência, demora um pouquinho quando o PDF é grande!')
-
+                self.logger.info(f'Iniciando PDF {counter + 1} de {qtde}: {data};{titulo}')
+                self.logger.warning(f'Por favor, tenha paciência, demora um pouquinho quando o PDF é grande!!')
+                print('\n\n\n\n')
                 #headers = {"X-Tika-OCRLanguage": "eng", "X-Tika-OCRTimeout": "300"}
                 #text_tika = parser.from_file(doc, xmlContent=False, requestOptions={'headers': headers, 'timeout': 300})
 
@@ -400,6 +406,11 @@ class start_robo ():
                 
                 headers = {"X-Tika-OCRTimeout": "900"}
                 raw = parser.from_file(f'{arquivo}', requestOptions={'headers': headers, 'timeout': 900})
+                #raw = ['\nProcesso Nº 09\n']
+
+                #raw ="{'metadata': {'Content-Type': 'application/pdf', 'Creation-Date': '2022-10-21T20:32:40Z', 'Last-Modified': '2022-10-21T20:33:04Z', 'Last-Save-Date': '2022-10-21T20:33:04Z', 'X-Parsed-By': ['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.pdf.PDFParser'], 'X-TIKA:content_handler': 'ToTextContentHandler', 'X-TIKA:embedded_depth': '0', 'X-TIKA:parse_time_millis': '14929', 'access_permission:assemble_document': 'true', 'access_permission:can_modify': 'true', 'access_permission:can_print': 'true', 'access_permission:can_print_degraded': 'true', 'access_permission:extract_content': 'true', 'access_permission:extract_for_accessibility': 'true', 'access_permission:fill_in_form': 'true', 'access_permission:modify_annotations': 'true', 'created': '2022-10-21T20:32:40Z', 'date': '2022-10-21T20:33:04Z', 'dc:format': 'application/pdf; version=1.4', 'dcterms:created': '2022-10-21T20:32:40Z', 'dcterms:modified': '2022-10-21T20:33:04Z', 'hasSignature': 'true', 'meta:creation-date': '2022-10-21T20:32:40Z', 'meta:save-date': '2022-10-21T20:33:04Z', 'modified': '2022-10-21T20:33:04Z', 'pdf:PDFVersion': '1.4', 'pdf:charsPerPage': ['2724', '1384'], 'pdf:docinfo:created': '2022-10-21T20:32:40Z', 'pdf:docinfo:modified': '2022-10-21T20:33:04Z', 'pdf:docinfo:producer': 'iText 2.0.7 (by lowagie.com); modified using iText® 5.2.1 ©2000-2012 1T3XT BVBA', 'pdf:encrypted': 'false', 'pdf:hasAcroFormFields': 'true', 'pdf:hasMarkedContent': 'false', 'pdf:hasXFA': 'false', 'pdf:hasXMP': 'false', 'pdf:unmappedUnicodeCharsPerPage': ['0','0'], 'producer': 'iText 2.0.7 (by lowagie.com); modified using iText® 5.2.1 ©2000-2012 1T3XT BVBA', 'xmpTPg:NPages': '1718'}, 'content': '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n968000148\n\n\n\nProcesso Nº 09\n\n\n', 'status': 200}"
+                #raw ="{'content': '\n\n968000148\n\n\n\nProcesso Nº 09\n\n\n', 'status': 200}"
+
 
                 #print(f'raw:\n\n\n{raw}\n\n\n')
 
@@ -442,7 +453,7 @@ class start_robo ():
 
                 self.util.sobrescrever_arquivo(arquivo+'.txt', raw['content'])
                 #print(f'acabou arquivo: {arquivo}')
-                self.logger.info(f'Finalizado PDF {counter} de {qtde} com {qtde_process} processos: {data};{titulo} ')
+                self.logger.info(f'Finalizado PDF {counter + 1} de {qtde} com {qtde_process} processos: {data};{titulo} ')
                 print('\n')
 
                 counter += 1
@@ -454,7 +465,10 @@ class start_robo ():
 
             #xls = f'{csv}'.replace('.csv', '.xls')
             #print(f'xls: {xls}')
-            df.to_excel(self.output+f'/TST_Relatorio.xlsx', index=False, sheet_name='Processos')
+            df.to_excel(self.output+f'/TST_Relatorio.xlsx', index=False, sheet_name='Relatorio')
+
+            #self.util.auto_ajuste_largura_excel(self.output+f'/TST_Relatorio.xlsx', 'Relatorio')
+
             os.remove(self.output+f'/TST_Relatorio.csv')
 
             self.converte_csv_xls(lista_csv)
@@ -488,6 +502,9 @@ class start_robo ():
             xls = f'{csv}'.replace('.csv','.xlsx')
             self.logger.info(f'Gerando xlsx: {xls}')
             df.to_excel(f'{xls}', index=False, sheet_name='Processos')
+
+            #self.util.auto_ajuste_largura_excel(xls, 'Processos')
+
             os.remove(f'{csv}')
             print('\n')
 
