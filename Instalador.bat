@@ -53,7 +53,7 @@ ECHO .
 ECHO .
 ECHO .
 pause
-move Instalador.bat TMP\
+move Instalador.bat src\
 exit
 
 :Label2

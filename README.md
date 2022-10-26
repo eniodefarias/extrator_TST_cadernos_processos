@@ -2,9 +2,43 @@
 
 ![tempo de desenvolvimento](https://wakatime.com/badge/user/739793a6-a4fb-4d88-b1e6-f79a9182d930/project/0636c7e1-b84d-4a9a-a005-047a7b6c01b3.svg)
 
+## Requisitos
+### Windows
+ - utilizar o Windowns 10 ou superior
+ - instalar o [DOCKER](https://docs.docker.com/desktop/install/windows-install/) [https://docs.docker.com/desktop/install/windows-install/](https://docs.docker.com/desktop/install/windows-install/)
+
+### Linux
+ - instalar o [docker](https://docs.docker.com/desktop/install/linux-install/) e [docker-compose](https://docs.docker.com/compose/install/)
 
 
-# Extrator
+## Instalação
+### Windows
+ - realizar o [download deste repositório](https://github.com/eniodefarias/extrator_TST_cadernos_processos/archive/refs/heads/main.zip) em um pasta
+ - descompactar o pacote
+ - dentro da pasta localizar o arquivo ```Instalador.bat``` e executá-lo
+   - 💡 lembre-se de ter instalado o [DOCKER](https://docs.docker.com/desktop/install/windows-install/) [https://docs.docker.com/desktop/install/windows-install/](https://docs.docker.com/desktop/install/windows-install/) ⚠️
+
+
+### Linux
+ - realizar o [download deste repositório](https://github.com/eniodefarias/extrator_TST_cadernos_processos/archive/refs/heads/main.zip) em um diretório
+ - descompactar 
+ - no diretorio do projeto, exevutar o ```docker build```:
+   - ```   docker build -t extrator_tst_cadernos_processos .   ```
+ 
+## Usando o extrator
+### Windows
+ - entre na pasta que foi descompactada
+   - execute o arquivo ```Extrator.bat```
+ - Após finalizado a extração, os resultados estarão dentro da pasta ```Output_Files```
+
+### Linux
+ - no diretório do projeto execute o ```docker run```
+   - ```   docker run --rm --mount type=bind,source=$(pwd),target=/app --name gerador extrator_tst_cadernos_processos   ```
+ - os resultados estarão no diretório ```Output_Files```
+
+
+
+# Extrator: histórico e evolução
   
 A execução deste programa iniciará o fluxo de extração dos dados.  
  - 💡 neste momento o projeto está em 80%, executando as etapas
@@ -22,30 +56,15 @@ A execução deste programa iniciará o fluxo de extração dos dados.
    - compilar os dados nos arquivos de saida em XLS
    - gerado relatorio em xls com os titulos, datas e qtde de processos encontrados
    - configurar o docker
+     - criado batch files .bat para windows para falicitar o ```docker build``` e o ```docker run``
 
  - falta isso:
    - converter para um executável .exe para windows -> mas acho que não vai rolar, está dando muitas incompatibilidades de OS, mas o Docker será mais eficiente!
 
-## Requisitos
-
-### Windows
- - utilizar o Windowns 10 ou superior
- - ter o [Google Chrome version 106](src/webdriver/chromedriver/windows_ChromeSetup_ver-106.0.5249.119_21-10-2022.exe) instalado
-
-### Linux
- - ter o [docker](https://docs.docker.com/desktop/install/linux-install/) e [docker-compose](https://docs.docker.com/compose/install/) instalados
-
-
-## Instalação e execução
-### Windows
- - realizar o download deste repositório em um pasta
- - executar o arquivo ```extrator.exe```
-
-### Linux
- - realizar o download deste repositório em um diretório
- - executar o docker com o seguinte comando:
-   - ```sudo docker xxx yyy zzz```
-
+ - melhorias futuras:
+   - download de pdf em Threads parelas
+   - testar outro leitor ocr de pdf que seja mais rápido, 
+     - ou dividir um pdf grande em arquivos com menos paginas e fazer a leitura com Trheads paralelas 
 
 
 

@@ -377,10 +377,10 @@ class start_robo ():
             lista_csv = []
 
             self.util.agregar_arquivo(self.output + f'/TST_Relatorio.csv', f'data;titulo;qtde_processos;arquivo')
-            self.util.agregar_arquivo(self.output + f'/TST_Relatorio.csv', f'data;titulo;qtde_processos;arquivo')
-            self.util.agregar_arquivo(self.output + f'/TST_Relatorio.csv', f'data;titulo;qtde_processos;arquivo')
-            self.util.agregar_arquivo(self.output + f'/TST_Relatorio.csv', f'data;titulo;qtde_processos;arquivo')
-            self.util.agregar_arquivo(self.output + f'/TST_Relatorio.csv', f'data;titulo;qtde_processos;arquivo')
+            #self.util.agregar_arquivo(self.output + f'/TST_Relatorio.csv', f'data;titulo;qtde_processos;arquivo')
+            #self.util.agregar_arquivo(self.output + f'/TST_Relatorio.csv', f'data;titulo;qtde_processos;arquivo')
+            #self.util.agregar_arquivo(self.output + f'/TST_Relatorio.csv', f'data;titulo;qtde_processos;arquivo')
+            #self.util.agregar_arquivo(self.output + f'/TST_Relatorio.csv', f'data;titulo;qtde_processos;arquivo')
 
 
             counter=0
